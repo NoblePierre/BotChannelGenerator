@@ -2,9 +2,9 @@
 	"name": "botchannelgenerator",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "./src/main.ts",
 	"scripts": {
-		"start": "npm run env:local node index.js",
+		"start": "npm run env:local ts-node src/main.ts",
 		"env:local": "env-cmd -f ./.env.local"
 	},
 	"author": "",
