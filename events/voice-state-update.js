@@ -35,7 +35,7 @@ module.exports = {
 		}
 
 		if (newChannel === null || newChannel.id !== VOICE_ROOM_CREATOR_CHANNEL_ID) {
-			if (oldChannel.name.match(/^Voice Room/) && !oldChannel.members.size) {
+			if (oldChannel && oldChannel.name.match(/^Voice Room/) && !oldChannel.members.size) {
 				oldChannel.delete();
 			}
 		}
