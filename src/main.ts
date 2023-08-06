@@ -1,6 +1,7 @@
 import { Client, GatewayIntentBits } from 'discord.js';
 import ready from './events/ready';
 import voiceStateUpdate from './events/voice-state-update';
+import interactionCreate from './events/interaction-create';
 
 console.log("Bot is starting...");
 
@@ -15,6 +16,7 @@ const client = new Client({
 });
 
 ready(client);
+interactionCreate(client);
 voiceStateUpdate(client);
 
 client.login(process.env.AUTH_TOKEN);
