@@ -1,13 +1,16 @@
 version: "3.4"
 
+
 services:
   bot-channel-generator:
-    image: ${CONTAINER_REGISTRY:-ghcr.io/pierrenoble/bot-channel-generator}:${BOT_CHANNEL_GENERATOR_VERSION:-latest}
+    env_file:
+    - .env.local
+    image: ghcr.io/pierrenoble/bot-channel-generator:latest
     deploy:
       restart_policy:
         condition: on-failure
         delay: 20s
-        max_attempts: 15
+        max_attempts: 15 
         window: 15s
     environment:
       - AUTH_TOKEN=${AUTH_TOKEN}
