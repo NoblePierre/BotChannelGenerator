@@ -12,17 +12,18 @@ const handleVoiceStateUpdate = async (client: Client, oldState: VoiceState, newS
 
 	if (newChannel && newChannel.name.match(new RegExp(/New voice/))) {
 		if (newState.member) {
-			const username = newState.member.user.username;
-			const upperCaseUsername = username.charAt(0).toUpperCase() + username.slice(1);
+			const username = newState.member.user.globalName;
 
 			newChannel.guild.channels.create({
-				name: `${upperCaseUsername} voice room`,
+				name: `${username} voice room`,
 				type: ChannelType.GuildVoice,
 				parent: newChannel.parent,
 				permissionOverwrites: [
 					{
 						id: newState.member.id,
-						allow: [PermissionsBitField.Flags.ManageChannels],
+						allow: [
+							PermissionsBitField.Flags.ManageChannels,
+						],
 					},
 					{
 						id: newState.guild.id,
@@ -35,8 +36,8 @@ const handleVoiceStateUpdate = async (client: Client, oldState: VoiceState, newS
 		}
 	}
 
-	if (newChannel === null || !newChannel.name.match(new RegExp(/New voice/))) {
-		if (oldChannel && oldChannel.name.match(/voice room$/) && !oldChannel.members.size) {
+	if (oldChannel?.name.match(/voice room$/)) {
+		if (oldChannel && !oldChannel.members.size) {
 			oldChannel.delete();
 		}
 	}

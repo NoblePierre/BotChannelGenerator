@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
         "baseUrl": "./src",
+        "rootDir": "./src/",
+        "outDir": "dist",
         "declaration": true,
         "emitDecoratorMetadata": true,
         "esModuleInterop": true,
@@ -8,7 +10,6 @@
         "importHelpers": true,
         "incremental": true,
         "module": "commonjs",
-        "outDir": "./dist",
         "removeComments": true,
         "skipLibCheck": true,
         "sourceMap": true,

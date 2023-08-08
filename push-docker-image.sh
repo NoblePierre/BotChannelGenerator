@@ -1,0 +1,13 @@
+#! /bin/bash
+
+REGISTRY="ghcr.io"
+WORKSPACE="noblepierre"
+VERSION=$(jq -r .version package.json)
+PACKAGE_NAME=$(jq -r .name package.json)
+
+echo $PACKAGE_NAME:$VERSION
+echo $REGISTRY/$WORKSPACE/$PACKAGE_NAME:$VERSION
+
+
+docker tag $WORKSPACE/$PACKAGE_NAME:$VERSION $REGISTRY/$WORKSPACE/$PACKAGE_NAME:$VERSION
+docker push $REGISTRY/$WORKSPACE/$PACKAGE_NAME:$VERSION

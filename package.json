@@ -1,11 +1,19 @@
 {
-	"name": "botchannelgenerator",
-	"version": "1.0.0",
+	"name": "bot-channel-generator",
+	"version": "1.0",
 	"description": "",
 	"main": "./src/main.ts",
 	"scripts": {
+		"build": "tsc --build",
+		"build:clean": "tsc --build --clean",
+		"docker:build": "bash ./build-docker-image.sh",
+		"docker:push": "bash ./push-docker-image.sh",
+		"docker:compose:up": "docker compose --env-file .env.local up -d",
+		"docker:compose:down": "",
 		"start": "npm run env:local ts-node src/main.ts",
-		"env:local": "env-cmd -f ./.env.local"
+		"start:prod": "npm run env:local node dist/main.js",
+		"dev": "npm run env:local ts-node-dev --respawn src/main.ts",
+		"env:local": "env-cmd -f .env.local"
 	},
 	"author": "",
 	"license": "ISC",
@@ -16,6 +24,7 @@
 	},
 	"devDependencies": {
 		"env-cmd": "^10.1.0",
-		"eslint": "^8.46.0"
+		"eslint": "^8.46.0",
+		"ts-node-dev": "^2.0.0"
 	}
 }
