@@ -4,7 +4,7 @@ FROM node:16-alpine as build
 COPY package*.json ./
 
 # clean install of dependencies
-RUN npm install
+RUN npm ci --force
 
 COPY ./ ./
 
