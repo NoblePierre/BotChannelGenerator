@@ -1,4 +1,4 @@
-import { ChannelType, PermissionsBitField, Events, Client, VoiceState } from 'discord.js';
+import { ChannelType, PermissionsBitField, Events, Client, VoiceState, ButtonBuilder, ButtonStyle } from 'discord.js';
 
 export default (client: Client): void => {
 	client.on(Events.VoiceStateUpdate, async (oldState: VoiceState, newState: VoiceState) => {
@@ -14,7 +14,7 @@ const handleVoiceStateUpdate = async (client: Client, oldState: VoiceState, newS
 		if (newState.member) {
 			const username = newState.member.user.globalName;
 
-			newChannel.guild.channels.create({
+			const channel = await newChannel.guild.channels.create({
 				name: `${username} voice room`,
 				type: ChannelType.GuildVoice,
 				parent: newChannel.parent,

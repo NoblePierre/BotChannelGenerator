@@ -9,9 +9,10 @@
 		"docker:build": "bash ./build-docker-image.sh",
 		"docker:push": "bash ./push-docker-image.sh",
 		"docker:compose:up": "docker compose --env-file .env.local up -d",
+		"docker:compose:down": "docker compose down",
 		"start": "npm run env:local ts-node src/main.ts",
+		"start:dev": "npm run env:local ts-node-dev --respawn src/main.ts",
 		"start:prod": "node dist/main.js",
-		"dev": "npm run env:local ts-node-dev --respawn src/main.ts",
 		"env:local": "env-cmd -f .env.local"
 	},
 	"author": "",

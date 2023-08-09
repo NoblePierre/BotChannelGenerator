@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "envFile": "${workspaceFolder}/.env.local",
+            "type": "node",
+            "request": "launch",
+            "name": "Launch + auto-restart",
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-node-dev",
+            "args": [
+                "--respawn",
+                "${workspaceRoot}/src/main.ts" 
+            ]
+        }
+    ]
+}
